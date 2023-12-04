@@ -1,6 +1,4 @@
 
-
-
 // 1 - Débito à vista, 10% de desconto;
 function debitoAVista(valor){
     return valor = valor - (valor * 0.1);
