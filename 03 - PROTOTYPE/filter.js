@@ -9,4 +9,30 @@ const listaDeNumerosPares = lista.filter((element) => {
     return (element % 2 === 0)
 })
 
-console.log(listaDeNumerosPares)
+//console.log(listaDeNumerosPares)
+//----------------------------------------------------------------
+
+function  obterMensagem(tipoMagia){
+
+
+    const mensagens = {
+        ataque: "Usou magia de ataque!",
+        cura: "Usou magia de cura!",
+        defesa: "Usou magia de defesa!",
+        invalido: "Tipo de magia inválido!"
+    };
+    
+    return mensagens[tipoMagia] || mensagens.invalido;
+}
+
+//const mensagem = obterMensagem('cura')
+//console.log(mensagem)
+
+const quantidade = 5
+const tipoMagia =  'defesa';
+
+
+for (let i = 0; i < quantidade; i++) {
+    const mensagem = obterMensagem(tipoMagia)
+    console.log(mensagem);
+  }
