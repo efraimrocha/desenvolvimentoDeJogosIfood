@@ -1,0 +1,75 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    border: 1px solid red;
+    background-color: #e3f2fd;
+    color: #fff;
+}
+
+.container{
+    width: 780px;
+    border: 1px solid rebeccapurple;
+    border-radius: 20px;
+    padding: 35px 40px;
+    background-color: black;
+}
+
+header h2{
+    font-size: 1.6rem;
+}
+
+header .colunm{
+    display: flex;
+    align-items: center;
+}
+
+header .colunm span{
+    font-weight: 500;
+    margin-right: 15px;
+    font-size: 1.19rem;
+}
+
+.volume-slider{
+    accent-color: #fff;
+}
+
+.keys-check input {
+    width: 60px;
+    height: 30px;
+    appearance: none;
+    background-color: #4b4b4b;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    
+}
+
+
+.keys-check input::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #8c8c8c;
+    position: absolute;
+    border-radius: inherit;
+    top: 50%;
+    left: 0.3rem;
+    transform: translateY(-50%);
+    transition: all 0.2s ease;
+
+
+}
+
+.keys-check input:checked:before {
+    left: 2.1rem;
+    background-color: #8c8c8c;
+    transform: translateY(-50%);
+    transition: all 0.2s ease;
+}
+
+.piano-keys{
+    display: flex;
+    margin-top: 40px;
+}
