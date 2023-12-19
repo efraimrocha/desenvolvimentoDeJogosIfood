@@ -27,23 +27,18 @@ function countDown(){
     state.view.timeLeft.textContent = state.values.curretTime;
     // verifica se tempo engotou
     if (state.values.curretTime <= 0){
+        playSound("game-over");
         clearInterval(state.actions.countDownTimerId);
         clearInterval(state.actions.timerId);
-        audioGameOver();
         alert("Game over! Your resul: " + state.values.result);
     }
 };
 
-function playSound(){
-    let audio = new Audio("./src/sounds/hit.m4a")
+function playSound(audioName){
+    let audio = new Audio(`./src/sounds/${audioName}.mp3`)
     audio.volume = 0.05;
     audio.play();
-}
-
-function playSoundGameOver(){
-    let audioGameOver = new Audio("./src/sounds/game-over.wav")
-    audioGameOver.play();
-}
+};
 
 function randomSquare(){
 
@@ -68,7 +63,7 @@ function addListnerHitBox(){
                 state.values.result++
                 state.view.socre.textContent = state.values.result;
                 state.values.hitPosition = null;
-                playSound();
+                playSound("hit");
             }
         }) 
     });
