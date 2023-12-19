@@ -39,7 +39,7 @@
 
 .enemy{
     background-image: url("../images/ralph.png");
-    background-color: red;
+    /* background-color: red; */
 }
 
 .menu-lives{
