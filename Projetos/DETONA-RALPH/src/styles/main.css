@@ -52,3 +52,16 @@
 .menu-score h2:nth-child(2){
     margin-top: 15px;
 }
+
+#message{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 7%;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    font-size: 150px;
+}

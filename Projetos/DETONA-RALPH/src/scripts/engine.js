@@ -6,7 +6,8 @@ const state = {
         enemy: document.querySelector(".enemy"),
         timeLeft: document.querySelector("#time-left"),
         socre: document.querySelector("#score"),
-        lives: document.querySelector("#lives")
+        lives: document.querySelector("#lives"),
+        message: document.querySelector("#message")
     },
     values:{
         gameVelocity: 1000,
@@ -20,26 +21,37 @@ const state = {
     }
 };
 
-
+// Contagem de tempo regressivo.
 function countDown(){
 
+    //Implementa uma suvtação do tempo setado.
     state.values.curretTime--;
+
+    //Atualiza a o tempo na view do game.
     state.view.timeLeft.textContent = state.values.curretTime;
+
     // verifica se tempo engotou
     if (state.values.curretTime <= 0){
         playSound("game-over");
         clearInterval(state.actions.countDownTimerId);
         clearInterval(state.actions.timerId);
-        alert("Game over! Your resul: " + state.values.result);
+        message("GAME OVER!");
+        // alert("Game over! Your resul: " + state.values.result);
     }
 };
 
+function message(message){
+    state.view.message.textContent = `${message}`;
+}
+
+// Toca um audio de forma genérica. Para isto, o arquivo deve está no formato mp3.
 function playSound(audioName){
     let audio = new Audio(`./src/sounds/${audioName}.mp3`)
     audio.volume = 0.05;
     audio.play();
 };
 
+//Escolhe o quadrado em que o inimigo irá aparecer de forma randômica.
 function randomSquare(){
 
     state.view.squares.forEach((square) => {
@@ -52,6 +64,7 @@ function randomSquare(){
     state.values.hitPosition = randomSquare.id;
 };
 
+// Função qu eativa a movimentação do enemy.
 function moveEnemy(){
     state.values.timerId = setInterval(randomSquare, state.values.gameVelocity)
 };
