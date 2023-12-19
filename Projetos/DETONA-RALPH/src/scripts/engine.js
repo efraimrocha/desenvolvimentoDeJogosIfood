@@ -1,4 +1,5 @@
-// 
+// state -> Aqui são fefinidos os elementos as variaveis que estão estão divididas em
+// duas sessões; view e values. Em view estarão os elemntos que será mostrado para o jogador e em values estão valores para cáculos e controle do game.
 const state = {
     view:{
         squares: document.querySelectorAll(".square"),
@@ -7,12 +8,34 @@ const state = {
         socre: document.querySelector("#score"),
     },
     values:{
-        timerId: null,
         gameVelocity: 1000,
         hitPosition: 0,
-        result: 0
+        result: 0,
+        curretTime: 60,
     },
+    actions:{
+        countDownTimerId: setInterval(countDown, 1000),
+        timerId: null,
+    }
 };
+
+
+function countDown(){
+
+    state.values.curretTime--;
+    state.view.timeLeft.textContent = state.values.curretTime;
+    // verifica se tempo engotou
+    if (state.values.curretTime <= 0){
+        clearInterval(state.actions.countDownTimerId);
+        clearInterval(state.actions.timerId);
+        alert("Game over! Your resul: " + state.values.result);
+    }
+};
+
+function playSound(){
+    let audio = new Audio("./src/sounds/hit.m4a")
+    audio.play();
+}
 
 function randomSquare(){
 
@@ -35,9 +58,9 @@ function addListnerHitBox(){
         square.addEventListener("mousedown", ()=>{
             if (square.id === state.values.hitPosition){
                 state.values.result++
-
                 state.view.socre.textContent = state.values.result;
                 state.values.hitPosition = null;
+                playSound();
             }
         }) 
     });
