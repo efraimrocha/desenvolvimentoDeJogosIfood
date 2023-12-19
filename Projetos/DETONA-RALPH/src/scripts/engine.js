@@ -6,6 +6,7 @@ const state = {
         enemy: document.querySelector(".enemy"),
         timeLeft: document.querySelector("#time-left"),
         socre: document.querySelector("#score"),
+        lives: document.querySelector("#lives")
     },
     values:{
         gameVelocity: 1000,
@@ -28,13 +29,20 @@ function countDown(){
     if (state.values.curretTime <= 0){
         clearInterval(state.actions.countDownTimerId);
         clearInterval(state.actions.timerId);
+        audioGameOver();
         alert("Game over! Your resul: " + state.values.result);
     }
 };
 
 function playSound(){
     let audio = new Audio("./src/sounds/hit.m4a")
+    audio.volume = 0.05;
     audio.play();
+}
+
+function playSoundGameOver(){
+    let audioGameOver = new Audio("./src/sounds/game-over.wav")
+    audioGameOver.play();
 }
 
 function randomSquare(){
@@ -65,6 +73,10 @@ function addListnerHitBox(){
         }) 
     });
 };
+
+function liveDown(){
+
+}
 
 function init() {
    moveEnemy();
